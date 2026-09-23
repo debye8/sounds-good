@@ -12,7 +12,7 @@ interface CategoryDisplayProps {
 export const CategoryDisplay: React.FC<CategoryDisplayProps> = ({ category, categoryKey }) => {
   return (
     <div className="flex items-center mb-2 p-1.5">
-      <span className="w-24 text-sm font-black text-black shrink-0 uppercase tracking-tight pl-1">
+      <span className="w-12 text-sm font-black text-black shrink-0 uppercase tracking-tight pl-1">
         {category.name}
       </span>
       <div className="flex items-center text-lg text-black font-bold">

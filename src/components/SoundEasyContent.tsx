@@ -105,10 +105,6 @@ export const SoundEasyContent: React.FC = () => {
             </div>
           ))}
         </div>
-        <div className="sticky top-4 bg-white border-4 border-black p-2 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] rotate-1 hover:rotate-0 transition-transform duration-300 w-[280px]">
-          <img className={"w-full object-contain bg-white"} src="/Phonogram.png" alt="Phonogram Chart" />
-          <div className="text-center font-bold mt-2 border-t-2 border-black pt-1 text-sm">IPA CHART</div>
-        </div>
       </div>
 
       {/* Practice Mode Modal */}
