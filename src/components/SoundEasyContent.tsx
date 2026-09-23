@@ -6,7 +6,8 @@ import { PracticeMode } from './PracticeMode';
 import { StatsModal } from './StatsModal';
 import { ReadAlongSettings } from './ReadAlongSettings';
 import { imageStructure } from '../constants/phonetic-structure';
-import { Play, Square, Target, BarChart2, Volume2 } from 'lucide-react';
+import { Eye, EyeOff, Play, Square, Target, BarChart2, Volume2 } from 'lucide-react';
+import { useExampleWords } from '../contexts/ExampleWordsContext';
 
 export const SoundEasyContent: React.FC = () => {
   const {
@@ -22,6 +23,7 @@ export const SoundEasyContent: React.FC = () => {
   const [playbackSpeed, setPlaybackSpeed] = useState(1.0);
   const [isLoop, setIsLoop] = useState(false);
   const [loopCount, setLoopCount] = useState(3);
+  const { showExampleWords, setShowExampleWords } = useExampleWords();
 
   // Calculate loading progress
   const totalSymbols = Object.keys(audioLoadStatus).length;
@@ -51,6 +53,15 @@ export const SoundEasyContent: React.FC = () => {
               {isLearningMode ? "停止跟读" : "跟读模式"}
             </button>
           </ReadAlongSettings>
+
+          <button
+            onClick={() => setShowExampleWords(!showExampleWords)}
+            aria-pressed={showExampleWords}
+            className={`flex items-center gap-2 px-3 py-1.5 text-black border-2 border-black font-bold shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-x-[3px] active:translate-y-[3px] active:shadow-none transition-all text-sm ${showExampleWords ? 'bg-[#FF69B4]' : 'bg-white'}`}
+          >
+            {showExampleWords ? <Eye size={16} /> : <EyeOff size={16} />}
+            显示例词
+          </button>
 
           <button
             onClick={() => setShowPracticeMode(true)}
@@ -119,20 +130,7 @@ export const SoundEasyContent: React.FC = () => {
 
       {/* Audio Source Attribution */}
       <div className="mt-8 pt-4 border-t-4 border-black text-center">
-        <div className="inline-block bg-white border-2 border-black px-3 py-1 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
-          <p className="text-xs font-bold text-black flex items-center gap-1">
-            <Volume2 size={12} />
-            音频资源: {' '}
-            <a
-              href="https://www.youtube.com/@yingyutu"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#FF69B4] hover:text-[#4ECDC4] underline decoration-2 decoration-black ml-1"
-            >
-              @yingyutu
-            </a>
-          </p>
-        </div>
+       
       </div>
 
       <AudioStatusIndicator />

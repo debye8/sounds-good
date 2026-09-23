@@ -3,6 +3,7 @@ import * as HoverCard from '@radix-ui/react-hover-card';
 import { PHONETIC_EXAMPLES } from '../data/phonetic-examples';
 import { PHONETIC_CONTRASTS } from '../data/phonetic-contrasts';
 import { Volume2 } from 'lucide-react';
+import { useExampleWords } from '../contexts/ExampleWordsContext';
 
 interface PhoneticTooltipProps {
     symbol: string;
@@ -10,11 +11,12 @@ interface PhoneticTooltipProps {
 }
 
 export const PhoneticTooltip: React.FC<PhoneticTooltipProps> = ({ symbol, children }) => {
+    const { showExampleWords } = useExampleWords();
     // Try to match the symbol directly or with slashes (as defined in the data file)
     const examples = PHONETIC_EXAMPLES[symbol] || PHONETIC_EXAMPLES[`/${symbol}/`];
     const contrasts = PHONETIC_CONTRASTS[symbol] || PHONETIC_CONTRASTS[`/${symbol}/`];
 
-    if (!examples) {
+    if (!examples || !showExampleWords) {
         return <>{children}</>;
     }
 

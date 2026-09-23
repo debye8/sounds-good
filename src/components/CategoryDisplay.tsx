@@ -16,7 +16,6 @@ export const CategoryDisplay: React.FC<CategoryDisplayProps> = ({ category, cate
         {category.name}
       </span>
       <div className="flex items-center text-lg text-black font-bold">
-        <span className="text-black font-black select-none mx-1.5 text-sm">/</span>
         <div className="flex flex-wrap items-center gap-1 mx-0.5">
           {category.symbols.map((symbolChar, symbolIndex) => {
             const symbolData = findSymbolData(symbolChar);
@@ -31,7 +30,6 @@ export const CategoryDisplay: React.FC<CategoryDisplayProps> = ({ category, cate
             );
           })}
         </div>
-        <span className="text-black font-black select-none mx-1.5 text-sm">/</span>
       </div>
     </div>
   );

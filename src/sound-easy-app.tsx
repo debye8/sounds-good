@@ -1,5 +1,6 @@
 import { AudioPlayerProvider } from './contexts/AudioPlayerContext';
 import { PracticeModeProvider } from './contexts/PracticeModeContext';
+import { ExampleWordsProvider } from './contexts/ExampleWordsContext';
 import { SoundEasyContent } from './components/SoundEasyContent';
 
 /**
@@ -9,7 +10,9 @@ export const SoundEasyApp = () => {
   return (
     <AudioPlayerProvider>
       <PracticeModeProvider>
-        <SoundEasyContent />
+        <ExampleWordsProvider>
+          <SoundEasyContent />
+        </ExampleWordsProvider>
       </PracticeModeProvider>
     </AudioPlayerProvider>
   );
